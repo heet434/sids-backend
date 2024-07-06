@@ -6,7 +6,6 @@ const patientSchema = new Schema({
     subjectNo: {
         type: String,
         required: true,
-        unique: true,
     },
     initials:{
         type: String, 
@@ -70,7 +69,7 @@ const patientSchema = new Schema({
     "bothIncreasedTGAndLowHDL(days)": {
         type: Number,
     },
-    "highHDL(days)": {
+    "highLDL(days)": {
         type: Number,
     },
 
@@ -107,7 +106,7 @@ const patientSchema = new Schema({
         'HB(gm/dl)': {
             type: Number,
         },
-        'TLC(cells/mm3': {
+        'TLC(cells/mm3)': {
             type: Number,
         },
         'plateletCount(1000/mm3)': {
@@ -186,7 +185,7 @@ const patientSchema = new Schema({
         },
     
     // Fibroscan/Transient Elastography
-        'fibroscan/trainsientElastography': {
+        'fibroscan/transientElastography': {
             type: Boolean,
         },
         'fibroscan/transientLSM(kPA)': {

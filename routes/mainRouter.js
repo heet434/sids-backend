@@ -1,16 +1,21 @@
 import { Router } from "express";
-const mainRouter = Router();
-
+import { verifyToken, verifyRole } from "../middlewares/authMiddleware.js";
 import * as mainController from '../controllers/mainController.js';
 
+const mainRouter = Router();
+
 mainRouter.route('/patients')
-    .get(mainController.getPatients)
-    .post(mainController.createPatient);
+    .get(verifyToken, mainController.getPatients) 
+    .post(verifyToken, verifyRole('user'), mainController.createPatient); 
 
 mainRouter.route('/patients/:id')
-    .get(mainController.getPatient)
-    .put(mainController.updatePatient)
-    .delete(mainController.deletePatient);
+    .get(verifyToken, mainController.getPatient)
+    .put(verifyToken, verifyRole('user'), mainController.updatePatient) 
+    .delete(verifyToken, verifyRole('admin'), mainController.deletePatient); 
+
+mainRouter.get('/findpatients', verifyToken, mainController.findPatientsBySubjectNoAndInitials);
+
+mainRouter.route('/patients/:subjectNo/:initials')
+    .put(verifyToken, verifyRole('user'), mainController.updatePatientBySubjectNoAndInitials);
 
 export default mainRouter;
-
