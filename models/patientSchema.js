@@ -31,7 +31,7 @@ const patientSchema = new Schema({
         type: Number,
     },
     'BP(mmHg)': {
-        type: Number,
+        type: String,
     },
     'waistCircumference(cm)': {
         type: Number,
@@ -43,61 +43,61 @@ const patientSchema = new Schema({
         type: Number,
     },
     // history of risk factors
-    // store the number of days the patient has been under risk factors
+    // store the number of months the patient has been under risk factors
     historyOfRiskFactors: {
         type: Boolean,
     },
-    "overweight(days)": {
+    "overweight(months)": {
         type: Number, 
     },
-    "obesity(days)": {
+    "obesity(months)": {
         type: Number, 
     },
-    "diabetes(days)": {
+    "diabetes(months)": {
         type: Number,
     },
-    "hypertension(days)": {
+    "hypertension(months)": {
         type: Number,
     },
 
-    "increasedTG(days)": {
+    "increasedTG(months)": {
         type: Number,
     },
-    "lowHDL(days)": {
+    "lowHDL(months)": {
         type: Number,
     },
-    "bothIncreasedTGAndLowHDL(days)": {
+    "bothIncreasedTGAndLowHDL(months)": {
         type: Number,
     },
-    "highLDL(days)": {
+    "highLDL(months)": {
         type: Number,
     },
 
-    "CAD(days)": {
+    "CAD(months)": {
         type: Number,
     },
-    "CVD(days)": {
+    "CVD(months)": {
         type: Number,
     },
 
     // family history of risk factors
 
-    "DM(days)": {
+    "DM(months)": {
         type: Number,
     },
-    "HT(days)": {
+    "HT(months)": {
         type: Number,
     },
-    "dyslipidaemia(days)": {
+    "dyslipidaemia(months)": {
         type: Number,
     },
-    "familyCAD(days)": {
+    "familyCAD(months)": {
         type: Number,
     },
-    "familyCVD(days)": {
+    "familyCVD(months)": {
         type: Number,
     },
-    "fattyLiver(days)": {
+    "fattyLiver(months)": {
         type: Number,
     },
 
@@ -151,6 +151,10 @@ const patientSchema = new Schema({
         'creatinine(mg/dl)': {
             type: Number,
         },
+    // FIB-4
+        'FIB4': {
+            type: Number,
+        },
     
     // other investigations
         // viral markers
@@ -183,6 +187,24 @@ const patientSchema = new Schema({
         AMA: {
             type: Boolean,
         },
+
+    // Imaging
+        // USG Abdomen
+        'USGAbdomen': {
+            type: Boolean,
+        },
+        'fattyLiver': {
+            type: Boolean,
+        },
+        'featuresOfCirrhosis': {
+            type: Boolean,
+        },
+        'ascites': {
+            type: Boolean,
+        },
+        'spaceOccupyingLesionsInLiver': {
+            type: Boolean,
+        },
     
     // Fibroscan/Transient Elastography
         'fibroscan/transientElastography': {
@@ -194,14 +216,14 @@ const patientSchema = new Schema({
         'fibroscan/transientCAP(dB/m)': {
             type: Number,
         },
-    // other Elastography
-        'otherElastography': {
+    // MR Elastography
+        'MRElastography': {
             type: Boolean,
         },
-        'otherElastographyLSM(kPA)': {
+        'MRElastographyLSM(kPA)': {
             type: Number,
         },
-        'otherElastographyCAP(dB/m)': {
+        'MRElastographyCAP(dB/m)': {
             type: Number,
         },
 
